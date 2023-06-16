@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<style>
+    #form-container {
+        border-style: solid;
+        border-color: lightblue;
+        border-width: 5px;
+    }
+
+    #comment {
+        resize: none;
+        width: 100%;
+    }
+</style>
+
+<body class="bg-dark text-light">
+
+    <div id="form-container" class="container d-flex justify-content-center flex-column bg-secondary col-4 p-3 mt-3">
+        
+
+        <form action="/process" method="post">
+            <div class="your_name mb-2">
+                <label for="name">Your Name:</label><br>
+                <input type="text" name="name" required>
+            </div>
+            <div class="dojo_location mb-2">
+                <label for="location">Dojo Location:</label><br>
+                <select name="location" id="dojo_location">
+                    <option value="none" selected disabled>---Select a City----</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="San Francisco">San Francisco</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="New York">New York</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Florida">Florida</option>
+                </select>
+            </div>
+            <div class="fav_lang mb-2">
+                <p>Your Favorite Language:</p>
+                <input type="radio" name="language" value="HTML" required>
+                <label for="html">HTML</label><br>
+                <input type="radio" name="language" value="CSS">
+                <label for="css">CSS</label><br>
+                <input type="radio" name="language" value="Javascript">
+                <label for="javascript">Javascript</label><br>
+                <input type="radio" name="language" value="Python">
+                <label for="python">Python</label><br>
+                <input type="radio" name="language" value="Flask">
+                <label for="flask">Flask</label>
+            </div>
+            {#<div class="league-role mb-2">
+                <p>What role(s) do you play in league?</p>
+                <input type="checkbox" name="roles" value="Top">
+                <label for="top">Top Lane</label><br>
+                <input type="checkbox" name="roles" value="Jungle">
+                <label for="jungle">Jungle</label><br>
+                <input type="checkbox" name="roles" value="Mid">
+                <label for="mid">Mid Lane</label><br>
+                <input type="checkbox" name="roles" value="Bot">
+                <label for="bot">Bot Lane</label><br>
+                <input type="checkbox" name="roles" value="Support">
+                <label for="support">Support</label><br>
+                <input type="checkbox" name="roles" value="Flex">
+                <label for="flex">Flex</label>
+            </div>#}
+            <div class="comment">
+                <label for="comment">Comment (optional):</label><br>
+                <textarea name="comment" id="comment" rows="10" placeholder="Comment here..."></textarea>
+
+            </div>
+            <input type="submit" class="btn btn-primary float-end" value="Submit">
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        <div class="container text-align-center">
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p><br>
+        {% endfor %}
+        {% endif %}
+        </div>
+        {% endwith %}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
